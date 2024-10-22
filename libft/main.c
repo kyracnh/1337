@@ -2,5 +2,5 @@
 
 int main()
 {
-	printf("%d\n", ft_isascii('h'));
+	printf("%d\n", ft_isprint('	'));
 }
