@@ -2,5 +2,5 @@
 
 int main()
 {
-	printf("%d\n", ft_isprint('	'));
+	printf("%zu\n", ft_strlen("hello"));
 }
