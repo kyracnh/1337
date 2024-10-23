@@ -6,6 +6,7 @@ size_t  strlcat(char *dest, const char *src, size_t destsize)
     size_t  src_len;
     size_t  i;
 
+    dest_len = 0;
     while (dest_len < destsize && dest[dest_len] != '\0')
     {
         dest_len++;
