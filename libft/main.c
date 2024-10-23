@@ -2,9 +2,10 @@
 
 int main()
 {
-	char dest[5];
-	char *src = "Hello! libft ^^";
+	char *s1 = "Hello";
+	char *s2 = "hello";
+	size_t n = 2;
 
-	printf("%zu\n", ft_strlcpy(dest, src, sizeof(dest)));
+	printf("%d\n", ft_strncmp(s1, s2, sizeof(n)));
 	
 }
