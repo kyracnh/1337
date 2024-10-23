@@ -2,8 +2,9 @@
 
 int main()
 {
-	char *dest[];
-	const char *src = "Hello! man";
+	char dest[20];
+	char *src = "Hello! libft ^^";
 
-	pritf("%d\n", ft_strlcpy(dest, src, 10));
+	printf("%zu\n", ft_strlcpy(dest, src, sizeof(dest)));
+	
 }
