@@ -58,4 +58,51 @@ A **dynamic library** is a separate file that is linked to the program at runtim
 Both static and dynamic libraries serve different purposes depending on the needs of the program. Static libraries provide simplicity and performance, while dynamic libraries offer flexibility and memory efficiency.
 
 ----
+# What are object files ?
 
+# Object Files
+
+## Overview
+
+Object files are an essential part of the compilation process when building programs from source code. They are intermediate files that contain machine-level code but are not yet a complete, executable program.
+
+## What is an Object File?
+
+An **object file** is the result of compiling source code, such as C or C++ code, into machine instructions. These files contain machine-readable code that can later be linked together to form an executable or a library.
+
+### Key Characteristics:
+
+- **File Extension**: Typically `.o` (Unix/Linux) or `.obj` (Windows).
+- **Contents**: Contains machine code, but not fully linked. External references (like function calls or global variables defined elsewhere) are still unresolved.
+- **Purpose**: Object files are used by the linker to generate the final executable by combining multiple object files and resolving dependencies between them.
+
+## The Compilation Process
+
+The creation of object files is one step in the process of compiling and linking a program:
+
+1. **Source Code**: Written in languages like C or C++ (`.c`, `.cpp` files).
+2. **Compilation**: The source code is compiled into object files (`.o` or `.obj`). Each source file is translated into an object file containing machine-level code specific to the system's architecture.
+3. **Linking**: Object files are passed to the **linker**, which combines them with other object files and libraries to produce a final executable or library. This step resolves any external references between object files.
+
+### Example:
+
+If you have two source files `main.c` and `utils.c`:
+
+# GCC `-c` Option
+
+## Overview
+
+The `-c` option in GCC stands for **"compile only"**. It is used to compile a source file into an **object file** without linking it into a final executable.
+
+## Example
+
+Consider the following command:
+
+```bash
+gcc -c main.c -o main.o
+
+
+- **Compilation**: 
+  ```bash
+  gcc -c main.c -o main.o
+  gcc -c utils.c -o utils.o
