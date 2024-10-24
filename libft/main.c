@@ -3,10 +3,8 @@
 
 int main()
 {
-	char *s1 = "hello";
-	char *s2 = "hello";
-	size_t n = 5;
+	char *s1 = "hello man!";
 
-	printf("%d\n", ft_strncmp(s1, s2, n));
-	printf("%d\n", strncmp(s1, s2, n));
+	printf("%s\n", ft_strchr(s1, ' '));
+	printf("%s\n", strchr(s1, ' '));
 }
