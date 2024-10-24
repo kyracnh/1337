@@ -3,11 +3,9 @@
 
 int main()
 {
-	char *s1 = "hello man!";
+	char *s1 = "hi! if you use this app, you can say : hello man! okay ?";
+	char *s2 = "hello man!";
 
-	printf("%s\n", ft_strchr(s1, 'l'));
-	printf("%s\n", strchr(s1, 'l'));
-
-	printf("%s\n", ft_strrchr(s1, 'l'));
-	printf("%s\n", strrchr(s1, 'l'));
+	
+	printf("%s\n", ft_strnstr(s1, s2, 20));
 }

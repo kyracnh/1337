@@ -16,5 +16,6 @@ size_t  strlcat(char *dest, const char *src, size_t destsize);
 int ft_strncmp(const char *s1, const char *s2, size_t n);
 char    *ft_strchr(const char *str, int c);
 char    *ft_strrchr(const char *str, int c);
+char    *ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 #endif
