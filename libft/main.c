@@ -7,5 +7,6 @@ int main()
 	char *s2 = "hello man!";
 
 	
-	printf("%s\n", ft_strnstr(s1, s2, 20));
+	printf("%d\n", ft_strnstr(s1, s2, 20));
+	printf("%d\n", strnstr(s1, s2, 20));
 }
