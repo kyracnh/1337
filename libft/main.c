@@ -3,10 +3,16 @@
 #include "libft.h"
 
 int main() {
-    char str[20] = "Hello, World!";
+    char arr[] = "Hello, World!";
+    
+    // Look for character 'W' within the first 12 bytes
+    char *result = (char *)ft_memchr(arr, 'W', 12);
 
-	ft_memmove(str + 7, str, 5);
-	printf("%s\n", str);
+    if (result != NULL) {
+        printf("Found 'W' at position: %ld\n", result - arr);
+    } else {
+        printf("'W' not found within the first 12 bytes.\n");
+    }
 
     return 0;
 }
