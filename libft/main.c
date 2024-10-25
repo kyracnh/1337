@@ -1,17 +1,28 @@
-#include "libft.h"
+#include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
+#include "libft.h"
 
-int main()
-{
-	/*char *s1 = "hi! if you use this app, you can say : hello man! okay ?";
-	char *s2 = "hello man!";
+int main() {
+    char buffer[10];
 
-	
-	printf("%d\n", ft_strnstr(s1, s2, 20));
-	printf("%d\n", strnstr(s1, s2, 20));*/
-	char buffer[15];
-	ft_bzero(buffer, 10);
+    // Fill the buffer with a non-zero character for testing
+    ft_memset(buffer, 'A', sizeof(buffer));
 
-	return 0;
+    // Print buffer before ft_memset
+    printf("Before ft_memset: ");
+    for (int i = 0; i < 10; i++)
+        printf("%c ", buffer[i]);
+    printf("\n");
+
+    // Apply ft_memset to the first 5 bytes
+    ft_memset(buffer, 'X', 5);
+
+    // Print buffer after ft_memset
+    printf("After ft_memset: ");
+    for (int i = 0; i < 10; i++) {
+        printf("%c ", buffer[i]);
+    }
+    printf("\n");
+
+    return 0;
 }
