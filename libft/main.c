@@ -10,8 +10,8 @@ int main()
 	
 	printf("%d\n", ft_strnstr(s1, s2, 20));
 	printf("%d\n", strnstr(s1, s2, 20));*/
-	printf("%d\n", ft_atoi("+--1000000"));
-	printf("%d\n", atoi("+--1000000"));
+	char buffer[15];
+	ft_bzero(buffer, 10);
 
 	return 0;
 }
