@@ -3,26 +3,12 @@
 #include "libft.h"
 
 int main() {
-    char buffer[10];
+    char dest[10];
+	char src[15] = "Hello Ahmed!";
 
-    // Fill the buffer with a non-zero character for testing
-    ft_memset(buffer, 'A', sizeof(buffer));
+	ft_memcpy(dest, src, 8);
 
-    // Print buffer before ft_memset
-    printf("Before ft_memset: ");
-    for (int i = 0; i < 10; i++)
-        printf("%c ", buffer[i]);
-    printf("\n");
-
-    // Apply ft_memset to the first 5 bytes
-    ft_memset(buffer, 'X', 5);
-
-    // Print buffer after ft_memset
-    printf("After ft_memset: ");
-    for (int i = 0; i < 10; i++) {
-        printf("%c ", buffer[i]);
-    }
-    printf("\n");
+	printf("%s\n", dest);
 
     return 0;
 }

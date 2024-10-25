@@ -20,5 +20,6 @@ char    *ft_strnstr(const char *haystack, const char *needle, size_t len);
 int    ft_atoi(const char *str);
 void    ft_bzero(void *s, size_t n);
 void    *ft_memset(void *buf, int c, size_t len);
+void    *ft_memcpy(void *dst, const void *src, size_t n);
 
 #endif
