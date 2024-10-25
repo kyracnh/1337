@@ -3,12 +3,10 @@
 #include "libft.h"
 
 int main() {
-    char dest[10];
-	char src[15] = "Hello Ahmed!";
+    char str[20] = "Hello, World!";
 
-	ft_memcpy(dest, src, 8);
-
-	printf("%s\n", dest);
+	ft_memmove(str + 7, str, 5);
+	printf("%s\n", str);
 
     return 0;
 }
