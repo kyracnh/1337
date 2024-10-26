@@ -6,7 +6,7 @@
 /*   By: aanmazir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 14:51:11 by aanmazir          #+#    #+#             */
-/*   Updated: 2024/10/26 14:53:31 by aanmazir         ###   ########.fr       */
+/*   Updated: 2024/10/26 16:10:25 by aanmazir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
-	char	*src;
+	size_t			i;
+	unsigned char	*src;
 
 	src = (unsigned char *)s;
 	i = 0;
