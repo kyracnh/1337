@@ -14,26 +14,13 @@
 
 void	*calloc(size_t nmemb, size_t size)
 {
-	size_t	n;
-	int	i;
-	void	*s;
-	void	**b;
-	int	max;
+	char	*s;
 
-	s = malloc(sizeof(int));
-	if (!s)
+	if (size != 0 && nmemb > SIZE_MAX / size)
 		return (NULL);
-
-	max = 2^48;
-	if (size > max)
+	s = (char *)malloc(nmemb * size);
+	if (s == NULL)
 		return (NULL);
-	n = nmemb;
-	b = 0;
-	i = 0;
-	while (i < n)
-	{
-		b += s;
-		ft_bzero(b, nmemb);
-		i++;
-	}
+	ft_bzero(s, nmemb * size);
+	return (s);
 }
