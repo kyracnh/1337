@@ -14,12 +14,12 @@
 
 void	*calloc(size_t nmemb, size_t size)
 {
-	char	*s;
+	void	*s;
 
 	if (size != 0 && nmemb > SIZE_MAX / size)
 		return (NULL);
 	s = (char *)malloc(nmemb * size);
-	if (s == NULL)
+	if (!s)
 		return (NULL);
 	ft_bzero(s, nmemb * size);
 	return (s);

@@ -3,7 +3,7 @@
 int main()
 {
     char *origin = "Hello Ahmed!";
-    char *copy = strdup(origin);
+    char *copy = ft_strdup(origin);
 
     if (copy)
     {
