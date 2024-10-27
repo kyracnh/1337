@@ -23,5 +23,5 @@ fclean: clean
 re: fclean all
 
 test:
-	gcc main.c -L. -lft -o main
+	@gcc main.c -L. -lft -o main
 	./main
