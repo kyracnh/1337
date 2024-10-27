@@ -1,0 +1,8 @@
+#include "libft.h"
+
+int main()
+{
+	printf("%d\n", ft_atoi("2147483351231231647"));
+	printf("%d\n", atoi("2147483643543543547"));
+	return 0;
+}
