@@ -3,7 +3,7 @@
 int main()
 {
 	char *s1 = "salamou alikoum my brother!";
-	char *string = ft_substr(s1, 8, 7);
-	printf("%s\n", string);
+	char *s2 = " akidayer akhoya l3ziz ?";
+	printf("%s\n", ft_strjoin(s1, s2));
 	return 0;
 }
