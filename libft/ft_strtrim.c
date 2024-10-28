@@ -49,7 +49,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	start = ft_start(s1, set, s_len);
 	end = ft_end(s1, set, s_len);
 	if (start >= end)
-		return (ft_strdup("");)
+		return (ft_strdup(""));
 	trim = (char *)malloc(sizeof(char) * (end - start + 1));
 	if (!trim)
 		return (NULL);
