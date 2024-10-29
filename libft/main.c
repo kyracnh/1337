@@ -2,9 +2,13 @@
 
 int main()
 {
-	char *s1 = "Hello brother, how are you doing ?";
-	char *s2 = ft_strtrim(s1, "doing");
-	printf("%s\n", s2);
-	free(s2);
+	char **d = ft_split("Hello my friend how are you doing?", ' ');
+
+	for (int i = 0; d[i] != '\0'; i++)
+	{
+		printf("%s\n", d[i]);
+		free(d[i]);
+	}
+	free(d);	
 	return 0;
 }

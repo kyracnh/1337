@@ -38,13 +38,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*trim;
 	size_t	start;
 	size_t	end;
-	size_t	i;
 
 	if (!s1)
 		return (NULL);
 	if (!set)
 		return (ft_strdup(s1));
-	i = 0;
 	s_len = ft_strlen(s1);
 	start = ft_start(s1, set, s_len);
 	end = ft_end(s1, set, s_len);
