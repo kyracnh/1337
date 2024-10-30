@@ -113,6 +113,6 @@ A linker is a crucial tool in the software development process that combines one
 # malloc
 In C, malloc returns a ```void *``` (a generic pointer that can point to any type).
 -----
-
+# File Descriptor
 What is Casting and what happens in memory ?
 
