@@ -9,8 +9,8 @@ int main()
     }
 
     // Test 1: Positive number
-    ft_putnbr_fd(164651, 1);
-    ft_putchar_fd('\n', 1); 
+    ft_putnbr_fd(-355266, fd);
+    ft_putchar_fd('\n', fd); 
 
 	return 0;
 }
