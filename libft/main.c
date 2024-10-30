@@ -1,22 +1,15 @@
 #include "libft.h"
-
-void toggle_case_at_even_index(unsigned int i, char *c)
-{
-    if (i % 2 == 0)  // Toggle case only at even indices
-    {
-        if (*c >= 'a' && *c <= 'z')
-            *c = *c - 32;  // Convert to uppercase
-        else if (*c >= 'A' && *c <= 'Z')
-            *c = *c + 32;  // Convert to lowercase
-    }
-}
+#include <fcntl.h>
 
 int main()
 {
-	char str[] = "iiiiiiii";
-    printf("Result: %s\n", str);
-    ft_striteri(str, toggle_case_at_even_index);
-    printf("Result: %s\n", str);  // Expected: "ToGgLeCaSe"
+	int c = open("kola.txt", O_WRONLY | O_CREAT, 0644);
+
+    if (c == -1)
+    {
+        return (1);
+    }
+    ft_putchar_fd('c', c);
 
 	return 0;
 }
