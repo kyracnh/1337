@@ -3,13 +3,10 @@
 
 int main()
 {
-	int c = open("kola.txt", O_WRONLY | O_CREAT, 0644);
+	int fd = open("klose.txt", O_WRONLY | O_CREAT, 0644);
 
-    if (c == -1)
-    {
-        return (1);
-    }
-    ft_putchar_fd('c', c);
+    ft_putstr_fd("hola man pppppp\n", fd);
+    fclose(fd);
 
 	return 0;
 }
