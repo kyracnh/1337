@@ -3,14 +3,16 @@
 
 int main()
 {
-	int fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-    if (fd == -1) {
-        return 1;  // Exit if file could not be opened
-    }
+	int data = 42;
+    t_list *new_node = ft_lstnew(&data);
 
-    // Test 1: Positive number
-    ft_putnbr_fd(-355266, fd);
-    ft_putchar_fd('\n', fd); 
+    if (new_node)
+        printf("Node content: %d\n", *(int *)new_node->content);
+    else
+        printf("Failed to create new node.\n");
 
-	return 0;
+    // Free the node after use to avoid memory leaks
+    free(new_node);
+
+    return 0;
 }
