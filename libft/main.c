@@ -1,21 +1,32 @@
 #include "libft.h"
 #include <fcntl.h>
 
+void print_list(t_list *head) {
+    t_list *current = head;
+    while (current) {
+        printf("%s -> ", (char *)current->content);
+        current = current->next;
+    }
+    printf("NULL\n");
+}
+
 int main()
 {
 	t_list *head = NULL;
-    t_list *node1 = ft_lstnew("Node 1");
-    t_list *node2 = ft_lstnew("Node 2");
-    t_list *node3 = ft_lstnew("Node 3");
-    t_list *node4 = ft_lstnew("good");
 
-    ft_lstadd_front(&head, node4);
-    ft_lstadd_front(&head, node3); // List: node3 -> NULL
-    ft_lstadd_front(&head, node2); // List: node2 -> node3 -> NULL
-    ft_lstadd_front(&head, node1); // List: node1 -> node2 -> node3 -> NULL
+    // Create new nodes
+    t_list *node1 = ft_lstnew("First Node");
+    t_list *node2 = ft_lstnew("Second Node");
+    t_list *node3 = ft_lstnew("Third Node");
 
-    t_list *last = ft_lstlast(head);
-    printf("Last node content: %s\n", (char *)last->content);
+    // Add nodes to the back of the list
+    ft_lstadd_back(&head, node1);
+    ft_lstadd_back(&head, node2);
+    ft_lstadd_back(&head, node3);
+
+    // Print the list to verify the contents
+    printf("Linked List after adding nodes to the back:\n");
+    print_list(head);
 
     return 0;
 }
