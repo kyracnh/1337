@@ -17,15 +17,15 @@ OBJS = $(SRCS:.c=.o)
 
 BONUS_OBJ = $(BONUS:.c=.o)
 
-all: $(NAME)
+all: $(NAME) bonus
 
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
 
-bonus: $(BONUS) $(BONUS_OBJ)
+bonus: $(NAME) $(BONUS_OBJ)
 	ar rc $(NAME) $(BONUS_OBJ)
 
-%.c: %.o
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 
