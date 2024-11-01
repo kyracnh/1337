@@ -1,65 +1,46 @@
 #include "libft.h"
 #include <fcntl.h>
 
-// Function to double the content of a node
-void double_value(void *content) {
-    int *num = (int *)content;
-    *num *= 2;
+// Helper functions for testing ft_lstmap
+void *increment(void *content)
+{
+    int *num = malloc(sizeof(int));
+    if (num)
+        *num = *(int *)content + 1;
+    return num;
 }
 
-// Function to print the content of a node
-void print_value(void *content) {
-    int *num = (int *)content;
-    printf("%d ", *num);
-}
-
-// Function to count even numbers (by modifying a global variable)
-int even_count = 0;
-void count_even(void *content) {
-    int *num = (int *)content;
-    if (*num % 2 == 0) {
-        even_count++;
-    }
+void del(void *content)
+{
+    free(content);
 }
 
 int main()
 {
-	// Create list nodes with integer values
-    t_list *head = ft_lstnew(malloc(sizeof(int)));
-    t_list *node2 = ft_lstnew(malloc(sizeof(int)));
-    t_list *node3 = ft_lstnew(malloc(sizeof(int)));
-    t_list *node4 = ft_lstnew(malloc(sizeof(int)));
+	// Create original list
+    t_list *lst = ft_lstnew(malloc(sizeof(int)));
+    *(int *)(lst->content) = 1;
+    ft_lstadd_back(&lst, ft_lstnew(malloc(sizeof(int))));
+    *(int *)(lst->next->content) = 2;
+    ft_lstadd_back(&lst, ft_lstnew(malloc(sizeof(int))));
+    *(int *)(lst->next->next->content) = 3;
 
-    if (!head || !node2 || !node3 || !node4) {
-        perror("Memory allocation failed");
-        return (EXIT_FAILURE);
+    // Apply ft_lstmap to create a new list
+    t_list *new_lst = ft_lstmap(lst, increment, del);
+
+    // Print contents of the new list
+    t_list *tmp = new_lst;
+    printf("New list contents: ");
+    while (tmp)
+    {
+        printf("%d ", *(int *)tmp->content);
+        tmp = tmp->next;
     }
-
-    // Assign integer values
-    *(int *)(head->content) = 1;
-    *(int *)(node2->content) = 3;
-    *(int *)(node3->content) = 5;
-    *(int *)(node4->content) = 7;
-
-    // Connect nodes to form the list
-    ft_lstadd_back(&head, node2);
-    ft_lstadd_back(&head, node3);
-    ft_lstadd_back(&head, node4);
-
-    // Step 1: Double each value in the list
-    ft_lstiter(head, double_value);
-
-    // Step 2: Print each doubled value in the list
-    printf("Doubled values: ");
-    ft_lstiter(head, print_value);
     printf("\n");
 
-    // Step 3: Count even numbers
-    ft_lstiter(head, count_even);
-    printf("Number of even values: %d\n", even_count);
+    // Clean up memory
+    ft_lstclear(&lst, del);
+    ft_lstclear(&new_lst, del);
 
-    // Free allocated memory
-    ft_lstclear(&head, free);
-
-    return (0);
+    return 0;
 }
