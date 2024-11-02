@@ -6,7 +6,7 @@
 /*   By: aanmazir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:41:28 by aanmazir          #+#    #+#             */
-/*   Updated: 2024/11/01 21:24:17 by aanmazir         ###   ########.fr       */
+/*   Updated: 2024/11/02 13:27:24 by aanmazir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	word_c(const char *str, char delim)
 {
 	size_t	count;
 
+	if (!s)
+		return (NULL);
 	count = 0;
 	while (*str)
 	{
@@ -52,16 +54,11 @@ char	*word_dup(const char *start, size_t len)
 char	**ft_split(const char *s, char del)
 {
 	char		**string;
-	const char	*start;
-	size_t		words;
 	size_t		i;
 	size_t		len;
 
-	if (!s)
-		return (NULL);
-	words = word_c(s, del);
-	string = (char **)malloc(sizeof(char *) * (words + 1));
-	if (!string)
+	string = (char **)malloc(sizeof(char *) * (word_c(s, del) + 1));
+	if (!s || !string)
 		return (NULL);
 	i = 0;
 	while (*s)
@@ -70,14 +67,12 @@ char	**ft_split(const char *s, char del)
 			s++;
 		if (*s)
 		{
-			start = s;
-			len = 0;
-			while (*s && *s != del)
-			{
-				len++;
-				s++;
-			}
-			string[i++] = word_dup(start, len);
+			if (!ft_strchr(s, del))
+				len = ft_strlen(s);
+			else
+				len = ft_strchr(s, del) - s;
+			string[i++] = ft_substr(s, 0, len);
+			s += len;
 		}
 	}
 	string[i] = NULL;
