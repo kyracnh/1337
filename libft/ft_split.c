@@ -6,7 +6,7 @@
 /*   By: aanmazir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:41:28 by aanmazir          #+#    #+#             */
-/*   Updated: 2024/11/02 13:27:24 by aanmazir         ###   ########.fr       */
+/*   Updated: 2024/11/02 13:29:32 by aanmazir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	word_c(const char *str, char delim)
 {
 	size_t	count;
 
-	if (!s)
-		return (NULL);
+	if (!str)
+		return (0);
 	count = 0;
 	while (*str)
 	{
@@ -31,24 +31,6 @@ int	word_c(const char *str, char delim)
 		}
 	}
 	return (count);
-}
-
-char	*word_dup(const char *start, size_t len)
-{
-	char	*word;
-	size_t	i;
-
-	word = (char *)malloc((len + 1) * sizeof(char));
-	if (!word)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		word[i] = start[i];
-		i++;
-	}
-	word[len] = '\0';
-	return (word);
 }
 
 char	**ft_split(const char *s, char del)
