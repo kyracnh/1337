@@ -19,7 +19,7 @@ OBJS = $(SRCS:.c=.o)
 
 BONUS_OBJ = $(BONUS:.c=.o)
 
-all: $(NAME) bonus
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)

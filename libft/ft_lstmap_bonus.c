@@ -12,23 +12,24 @@
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
-{
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *)) {
 	t_list	*n_list;
 	t_list	*n_elem;
+	void	*new_content;
 
 	n_list = NULL;
-	if (lst && f && del)
-	{
-		while (lst)
-		{
-			n_elem = ft_lstnew(f(lst->content));
-			if (!n_elem)
-			{
-				ft_lstclear(&n_list, del);
+	if (lst && f && del) {
+		while (lst) {
+			// Apply function f to create new content
+			new_content = f(lst->content);
+			// Create a new list element with the new content
+			n_elem = ft_lstnew(new_content);
+			if (!n_elem) {
+				del(new_content);            // Free new_content if node creation fails
+				ft_lstclear(&n_list, del);   // Clear the entire list
 				return (NULL);
 			}
-			ft_lstadd_back(&n_list, n_elem);
+			ft_lstadd_back(&n_list, n_elem); // Add the new element to the list
 			lst = lst->next;
 		}
 	}
