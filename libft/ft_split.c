@@ -21,14 +21,12 @@ int	word_c(const char *str, char delim)
 	count = 0;
 	while (*str)
 	{
-		if (*str == delim)
+		while (*str == delim)
 			str++;
 		if (*str)
-		{
 			count++;
-			while (*str && *str != delim)
+		while (*str && *str != delim)
 				str++;
-		}
 	}
 	return (count);
 }
@@ -36,16 +34,16 @@ int	word_c(const char *str, char delim)
 char	**ft_split(const char *s, char del)
 {
 	char		**string;
-	size_t		i;
+	int		i;
 	size_t		len;
 
 	string = (char **)malloc(sizeof(char *) * (word_c(s, del) + 1));
 	if (!s || !string)
-		return (NULL);
+		return (0);
 	i = 0;
 	while (*s)
 	{
-		while (*s == del)
+		while (*s == del && *s)
 			s++;
 		if (*s)
 		{
