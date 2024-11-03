@@ -6,7 +6,7 @@
 /*   By: aanmazir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:41:28 by aanmazir          #+#    #+#             */
-/*   Updated: 2024/11/03 14:57:29 by aanmazir         ###   ########.fr       */
+/*   Updated: 2024/11/03 15:54:14 by aanmazir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	free_split(char **split, int w)
 		i++;
 	}
 	free(split);
+	return (NULL);
 }
 
 int	word_c(const char *str, char delim)
@@ -65,10 +66,7 @@ static char	**make_split(char *s, char del, char **string)
 				len = ft_strchr(s, del) - s;
 			string[i] = ft_substr(s, 0, len);
 			if (!string[i])
-			{
-				free_split(string, i);
-				return (NULL);
-			}
+				return (free_split(string, i));
 			i++;
 			s += len;
 		}
