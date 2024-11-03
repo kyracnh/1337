@@ -6,7 +6,7 @@
 /*   By: aanmazir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:41:28 by aanmazir          #+#    #+#             */
-/*   Updated: 2024/11/03 14:38:45 by aanmazir         ###   ########.fr       */
+/*   Updated: 2024/11/03 14:57:29 by aanmazir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	**ft_split(const char *s, char del)
 		return (NULL);
 	while (*s)
 	{
-		while (*s == del && *s)
+		while (*s && *s == del)
 			s++;
 		if (*s)
 		{
