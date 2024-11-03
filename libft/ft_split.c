@@ -12,12 +12,12 @@
 
 #include "libft.h"
 
-static void	free_split(char **split, int words)
+static void	free_split(char **split, int w)
 {
 	int	i;
 
 	i = 0;
-	while (i < words)
+	while (i < w)
 	{
 		if (split[i])
 			free(split[i]);
@@ -47,16 +47,12 @@ int	word_c(const char *str, char delim)
 	return (count);
 }
 
-char	**ft_split(const char *s, char del)
+static char	**make_split(char *s, char del, char **string)
 {
-	char	**string;
-	int		i;
-	size_t	len;
+	int	len;
+	int	i;
 
 	i = 0;
-	string = (char **)malloc(sizeof(char *) * (word_c(s, del) + 1));
-	if (!string)
-		return (NULL);
 	while (*s)
 	{
 		while (*s && *s == del)
@@ -78,5 +74,16 @@ char	**ft_split(const char *s, char del)
 		}
 	}
 	string[i] = NULL;
+	return (string);
+}
+
+char	**ft_split(const char *s, char del)
+{
+	char	**string;
+
+	string = (char **)malloc(sizeof(char *) * (word_c(s, del) + 1));
+	if (!string)
+		return (NULL);
+	string = make_split((char *)s, del, string);
 	return (string);
 }
