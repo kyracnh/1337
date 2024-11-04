@@ -38,7 +38,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-test:
-	@gcc main.c -L. -lft -o main
-	./main
