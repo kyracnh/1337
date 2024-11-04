@@ -6,7 +6,7 @@
 /*   By: aanmazir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:41:28 by aanmazir          #+#    #+#             */
-/*   Updated: 2024/11/03 15:54:14 by aanmazir         ###   ########.fr       */
+/*   Updated: 2024/11/04 21:40:11 by aanmazir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ char	**ft_split(const char *s, char del)
 {
 	char	**string;
 
+	if (s == NULL)
+		return (NULL);
 	string = (char **)malloc(sizeof(char *) * (word_c(s, del) + 1));
 	if (!string)
 		return (NULL);
