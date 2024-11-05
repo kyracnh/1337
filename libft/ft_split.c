@@ -31,8 +31,6 @@ int	word_c(const char *str, char delim)
 {
 	size_t	count;
 
-	if (!str)
-		return (0);
 	count = 0;
 	while (*str)
 	{
