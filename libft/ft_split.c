@@ -31,6 +31,8 @@ int	word_c(const char *str, char delim)
 {
 	size_t	count;
 
+	if (!str || !delim)
+		return (0);
 	count = 0;
 	while (*str)
 	{
@@ -77,7 +79,7 @@ char	**ft_split(const char *s, char del)
 {
 	char	**string;
 
-	if (!s || !del)
+	if (s == NULL || del == '\0')
 		return (NULL);
 	string = (char **)malloc(sizeof(char *) * (word_c(s, del) + 1));
 	if (!string)
