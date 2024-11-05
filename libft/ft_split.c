@@ -12,78 +12,78 @@
 
 #include "libft.h"
 
-static char	**free_split(char **split, int w)
+static int	count_word(const char *s, char c)
+{
+	int	i;
+	int	wc;
+	int	temp;
+
+	i = 0;
+	wc = 0;
+	temp = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			temp = 0;
+		else if (temp == 0)
+		{
+			temp = 1;
+			wc++;
+		}
+		i++;
+	}
+	return (wc);
+}
+
+static void	*free_split(char **split, int k)
 {
 	int	i;
 
 	i = 0;
-	while (i < w)
+	while (i < k)
 	{
-		if (split[i])
-			free(split[i]);
+		free(split[i]);
 		i++;
 	}
 	free(split);
 	return (NULL);
 }
 
-int	word_c(const char *str, char delim)
+static char	**to_split(char *s, char c, char **split)
 {
-	size_t	count;
-
-	if (!str || !delim)
-		return (0);
-	count = 0;
-	while (*str)
-	{
-		while (*str == delim)
-			str++;
-		if (*str)
-		{
-			count++;
-			while (*str && *str != delim)
-				str++;
-		}
-	}
-	return (count);
-}
-
-static char	**make_split(char *s, char del, char **string)
-{
-	int	len;
 	int	i;
+	int	k;
+	int	p;
 
+	k = 0;
 	i = 0;
-	while (*s)
+	while (s[i])
 	{
-		while (*s && *s == del)
-			s++;
-		if (*s)
+		if (s[i] != c)
 		{
-			if (!ft_strchr(s, del))
-				len = ft_strlen(s);
-			else
-				len = ft_strchr(s, del) - s;
-			string[i] = ft_substr(s, 0, len);
-			if (!string[i])
-				return (free_split(string, i));
-			i++;
-			s += len;
+			p = i;
+			while (s[i] != c && s[i])
+				i++;
+			split[k++] = ft_substr(s, p, i - p);
+			if (!split[k - 1])
+				return (free_split(split, k));
 		}
+		else
+			i++;
 	}
-	string[i] = NULL;
-	return (string);
+	split[k] = 0;
+	return (split);
 }
 
-char	**ft_split(const char *s, char del)
+char	**ft_split(char const *s, char c)
 {
-	char	**string;
+	char	**split;
 
-	if (s == NULL || del == '\0')
+	if (s == NULL)
 		return (NULL);
-	string = (char **)malloc(sizeof(char *) * (word_c(s, del) + 1));
-	if (!string)
+	split = (char **)malloc((count_word(s, c) + 1) * sizeof(char *));
+	if (!split)
 		return (NULL);
-	string = make_split((char *)s, del, string);
-	return (string);
+	split = to_split((char *)s, c, split);
+	return (split);
 }
