@@ -1,14 +1,16 @@
 #include "libft.h"
+#include <ctype.h>
 
 int main()
 {
-    int v[] = {1, 2, 3, 4, 5, 6, 7, 8};
-
-    ft_memmove(v + 2, v, sizeof(int) * 4);
-    for (size_t i = 0; i < 8; i++)
-    {
-        printf("v : %d\n", v[i]);
-    }
+    printf("My Func : %s\n", ft_itoa(-2134));
+    printf("My Func : %s\n", ft_itoa(42));
+    printf("My Func : %s\n", ft_itoa(707));
+    printf("My Func : %s\n", ft_itoa(INT32_MIN));
+    printf("My Func : %s\n", ft_itoa(INT32_MAX));
+    printf("My Func : %s\n", ft_itoa(0));
     
     
+    
+    return 0;    
 }
