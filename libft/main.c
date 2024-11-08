@@ -6,7 +6,11 @@ int main()
     char *v = NULL;
     char *c = NULL;
 
-    ft_strjoin(NULL, 0);
+    char *d = ft_strtrim("hello my dear friend", "d");
+
+    printf("%s\n", d);
+
+    
     
     
     
