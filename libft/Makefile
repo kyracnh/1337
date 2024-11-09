@@ -30,7 +30,6 @@ bonus: $(NAME) $(BONUS_OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-
 clean:
 	rm -f $(OBJS) $(BONUS_OBJ)
 
@@ -38,7 +37,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-test:
-	@gcc main.c -L. -lft -o main
-	./main
