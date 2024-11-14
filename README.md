@@ -115,4 +115,3 @@ In C, malloc returns a ```void *``` (a generic pointer that can point to any typ
 -----
 # File Descriptor
 What is Casting and what happens in memory ?
-
