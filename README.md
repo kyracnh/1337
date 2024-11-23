@@ -101,7 +101,6 @@ Consider the following command:
 ```bash
 gcc -c main.c -o main.o
 
-
 - **Compilation**: 
   ```bash
   gcc -c main.c -o main.o
