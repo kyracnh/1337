@@ -39,4 +39,4 @@ crontab -r
 ```
 
 # wall :
-The wall command is used in Unix-like operating systems to send a message to all logged-in users on the system. 
+The wall command is used in Unix-like operating systems to send a message to all logged-in users on the system. It stands for "write all" and allows system administrators or users to broadcast a message to all users currently logged into the system, typically used for announcements or warnings.
