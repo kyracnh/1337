@@ -24,3 +24,19 @@ The syntax is as follows:
 │ └─────── Hour (0 - 23)
 └───────── Minute (0 - 59)
 ```
+
+Edit your crontab:
+```
+crontab -e
+```
+List current cron jobs:
+```
+crontab -l
+```
+Remove your crontab:
+```
+crontab -r
+```
+
+# wall :
+The wall command is used in Unix-like operating systems to send a message to all logged-in users on the system. 
