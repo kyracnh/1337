@@ -6,11 +6,11 @@
 /*   By: aanmazir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:51:26 by aanmazir          #+#    #+#             */
-/*   Updated: 2024/11/28 13:52:03 by aanmazir         ###   ########.fr       */
+/*   Updated: 2024/11/28 15:18:03 by aanmazir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-include "get_next_line.h"
+#include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
