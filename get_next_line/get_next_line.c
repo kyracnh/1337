@@ -12,57 +12,49 @@
 
 #include "get_next_line.h"
 
-char	*get_line(char *line, char **reserve, int fd)
+char	*get_line(char *line, int fd)
 {
 	char	buffer[BUFFER_SIZE + 1];
-	char	*newline_pos;
+	char	*str;
+	char	*res;
 	ssize_t	numRead;
 	size_t	line_len;
-	size_t	total_len;
+	size_t	tlen;
 
-	total_len = 0;
-	while ((numRead = read(fd, buffer, BUFFER_SIZE)) > 0)
+	tlen = 0;
+	str = (char *)malloc(BUFFER_SIZE);
+	if (!str)
+	return (NULL);
+	while ((numRead = read(fd, str, BUFFER_SIZE)) > 0)
 	{
 		buffer[numRead] = '\0';
-		newline_pos = strchr(buffer, '\n');
-		if (newline_pos)
-		{
-			line_len = newline_pos - buffer + 1;
-			line = realloc(line, total_len + line_len + 1);
-			if (!line)
-				return (NULL);
-			strncat(line, buffer, line_len);
-			*reserve = strdup(newline_pos + 1);
-			if (!*reserve)
-				return (NULL);
-			return (line);
-		}
-		line = realloc(line, total_len + numRead + 1);
-		if (!line)
-		{
-			line = malloc(1);
-			if (!line)
-				return (NULL);
-			line[0] = '\0';
-		}
-		strncat(line, buffer, numRead);
-		total_len += numRead;
+		res = ft_strjoin(line, str);
+		free(line);
+		buf = res;
+		if (ft_strchr(buf, '\n') > -1)
+			break ;
+		numRead = read(fd, str, BUFFER_SIZE);
 	}
-	if (numRead == 0 && line && total_len > 0)
-		return (line);
-	free(line);
-	return (NULL);
+	free(str);
+	return (buf);
 }
 
-char	*check_reserve(char *line, char **reserve)
+char	*print_line(char *reserve)
 {
-	if (*reserve)
+	
+}
+
+char	*check_reserve(char *reserve)
+{
+	char *line;
+
+	if (reserve)
 	{
-		line = strdup(*reserve);
+		line = strdup(reserve);
 		if (!line)
 			return (NULL);
-		free(*reserve);
-		*reserve = (NULL);
+		free(reserve);
+		reserve = (NULL);
 	}
 	return (line);
 }
@@ -72,9 +64,11 @@ char	*get_next_line(int fd)
 	static char	*reserve;
 	char	*line;
 
-	reserve = NULL;
 	line = NULL;
-	line = check_reserve(line, &reserve);
-	line = get_line(line, &reserve, fd);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	reserve = get_line(reserve, fd);
+	line = print_line(reserve);
+	reserve = check_reserve(reserve);
 	return (line);
 }
