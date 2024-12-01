@@ -12,63 +12,92 @@
 
 #include "get_next_line.h"
 
-char	*get_line(char *line, int fd)
+char	*get_first_line(int fd, char *res)
 {
-	char	buffer[BUFFER_SIZE + 1];
+	char	*temp;
 	char	*str;
-	char	*res;
-	ssize_t	numRead;
-	size_t	line_len;
-	size_t	tlen;
+	int	re;
 
-	tlen = 0;
-	str = (char *)malloc(BUFFER_SIZE);
+	str = (char *)malloc(BUFFER_SIZE + 1);
 	if (!str)
-	return (NULL);
-	while ((numRead = read(fd, str, BUFFER_SIZE)) > 0)
+		return (NULL);
+	re = read(fd, str, BUFFER_SIZE);
+	if (re < 0)
+		return (free_it(str, res));
+	while (re > 0)
 	{
-		buffer[numRead] = '\0';
-		res = ft_strjoin(line, str);
-		free(line);
-		buf = res;
-		if (ft_strchr(buf, '\n') > -1)
+		if (re < 0)
+		return (free_it(str, res));
+		str[re] = '\0';
+		temp = ft_strjoin(res, str);
+		free(res);
+		res = temp;
+		if (ft_strchr(res, '\n') > -1)
 			break ;
-		numRead = read(fd, str, BUFFER_SIZE);
+		re = read(fd, str, BUFFER_SIZE);
 	}
 	free(str);
-	return (buf);
+	return (res);
 }
 
-char	*print_line(char *reserve)
+char	*print_line(char *res)
 {
-	
-}
+	char	*newline;
+	int	i;
+	int	j;
 
-char	*check_reserve(char *reserve)
-{
-	char *line;
-
-	if (reserve)
+	if (!res)
+		return (NULL);
+	if (res[0] == '\0')
+		return (NULL);
+	i = 0;
+	while (res[i] && res[i] != '\n')
+		i++;
+	newline = (char *)malloc(i + 2);
+	if (!newline)
+		return (NULL);
+	j = 0;
+	while (j <= i)
 	{
-		line = strdup(reserve);
-		if (!line)
-			return (NULL);
-		free(reserve);
-		reserve = (NULL);
+		newline[j] = res[j];
+		j++;
 	}
-	return (line);
+	newline[j] = '\0';
+	return (newline);
+}
+
+char	*get_reserve(char *res)
+{
+	char	*last;
+	int	i;
+
+	i = 0;
+	if (!res)
+		return (free(res), NULL);
+	while (res[i] && res[i] != '\n')
+		i++;
+	if (!res[i])
+		return (free(res), NULL);
+	i++;
+	last = ft_strdup(res + i);
+	if (!last)
+	{
+		free(res);
+		return (NULL);
+	}
+	free(res);
+	return (last);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*reserve;
+	static	char *res;
 	char	*line;
 
-	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	reserve = get_line(reserve, fd);
-	line = print_line(reserve);
-	reserve = check_reserve(reserve);
+		return (free(res), NULL);
+	res = get_first_line(fd, res);
+	line = print_line(res);
+	res = get_reserve(res);
 	return (line);
 }

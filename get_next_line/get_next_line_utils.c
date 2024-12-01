@@ -86,3 +86,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ptr[++j] = '\0';
 	return (ptr);
 }
+
+void	*free_it(char *s1, char *s2)
+{
+	free(s1);
+	free(s2);
+	return (NULL);
+}
