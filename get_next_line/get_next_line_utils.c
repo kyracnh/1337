@@ -87,7 +87,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (ptr);
 }
 
-void	*free_it(char *s1, char *s2)
+void	*double_free(char *s1, char *s2)
 {
 	free(s1);
 	free(s2);

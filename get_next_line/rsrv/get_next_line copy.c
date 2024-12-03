@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*get_the_line(int fd, char *res)
+char	*get_first_line(int fd, char *res)
 {
 	char	*temp;
 	char	*str;
@@ -23,7 +23,7 @@ char	*get_the_line(int fd, char *res)
 		return (NULL);
 	re = read(fd, str, BUFFER_SIZE);
 	if (re < 0)
-		return (double_free(str, res), NULL);
+		return (double_free(str, res));
 	while (re > 0)
 	{
 		if (re < 0)
@@ -53,7 +53,7 @@ char	*print_line(char *res)
 	i = 0;
 	while (res[i] && res[i] != '\n')
 		i++;
-	newline = malloc(i + 2);
+	newline = (char *)malloc(i + 2);
 	if (!newline)
 		return (NULL);
 	j = 0;
@@ -71,9 +71,9 @@ char	*get_reserve(char *res)
 	char	*last;
 	int		i;
 
+	i = 0;
 	if (!res)
 		return (free(res), NULL);
-	i = 0;
 	while (res[i] && res[i] != '\n')
 		i++;
 	if (!res[i])
@@ -81,7 +81,10 @@ char	*get_reserve(char *res)
 	i++;
 	last = ft_strdup(res + i);
 	if (!last)
-		return (free(res), NULL);
+	{
+		free(res);
+		return (NULL);
+	}
 	free(res);
 	return (last);
 }
@@ -89,11 +92,11 @@ char	*get_reserve(char *res)
 char	*get_next_line(int fd)
 {
 	static char	*res;
-	char	*line;
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (free(res),NULL);
-	res = get_the_line(fd, res);
+		return (free(res), NULL);
+	res = get_first_line(fd, res);
 	line = print_line(res);
 	res = get_reserve(res);
 	return (line);

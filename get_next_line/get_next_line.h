@@ -29,5 +29,5 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s1);
 int	ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
-void	*free_it(char *s1, char *s2);
+void	*double_free(char *s1, char *s2);
 #endif
