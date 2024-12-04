@@ -16,7 +16,7 @@ char	*get_the_line(int fd, char *res)
 {
 	char	*temp;
 	char	*str;
-	int		re;
+	ssize_t		re;
 
 	str = (char *)malloc(BUFFER_SIZE + 1);
 	if (!str)
@@ -91,7 +91,7 @@ char	*get_next_line(int fd)
 	static char	*res;
 	char	*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
 		return (free(res),NULL);
 	res = get_the_line(fd, res);
 	line = print_line(res);
