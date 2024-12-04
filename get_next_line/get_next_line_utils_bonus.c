@@ -1,11 +1,16 @@
-#include "get_next_line.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aanmazir <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/28 13:52:35 by aanmazir          #+#    #+#             */
+/*   Updated: 2024/11/28 13:52:51 by aanmazir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	*free_it(char *s1, char *s2)
-{
-	free(s1);
-	free(s2);
-	return (NULL);
-}
+#include "get_next_line.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -79,4 +84,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		ptr[++j] = s2[i];
 	ptr[++j] = '\0';
 	return (ptr);
+}
+
+void	*double_free(char *s1, char *s2)
+{
+	free(s1);
+	free(s2);
+	return (NULL);
 }
