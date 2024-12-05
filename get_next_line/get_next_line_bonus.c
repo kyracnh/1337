@@ -92,9 +92,9 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
-		return (free(res), NULL);
-	res = get_the_line(fd, res[fd]);
+		return (NULL);
+	res[fd] = get_the_line(fd, res[fd]);
 	line = print_line(res[fd]);
-	res = get_reserve(res[fd]);
+	res[fd] = get_reserve(res[fd]);
 	return (line);
 }
