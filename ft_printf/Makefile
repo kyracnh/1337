@@ -6,9 +6,12 @@ NAME = libftprintf.a
 OBJS =
 
 all:
+	ar rc .c=.o
 
 clean:
+	rm -f *.o
 
-fclean:
+fclean: clean
+	rm -f .a
 
-re:
+re: fclean all
