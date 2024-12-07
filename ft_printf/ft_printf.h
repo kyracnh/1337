@@ -20,4 +20,7 @@
 
 int	ft_printf(const char *, ...);
 void    ft_putchar(char c);
+void    ft_putstr(char *str);
+char	*ft_itoa(int n);
+size_t	ft_strlen(const char *str);
 #endif
