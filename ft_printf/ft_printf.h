@@ -19,8 +19,12 @@
 # include <stdarg.h>
 
 int	ft_printf(const char *, ...);
-void    ft_putchar(char c);
+int    ft_putchar(char c);
 void    ft_putstr(char *str);
 char	*ft_itoa(int n);
 size_t	ft_strlen(const char *str);
+int ft_puthex(unsigned long n);
+int ft_putptr(void *ptr);
+int ft_putunbr(unsigned int n);
+int ft_puthex_u(unsigned long n);
 #endif

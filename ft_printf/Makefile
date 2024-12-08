@@ -3,15 +3,27 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = libftprintf.a
 
-OBJS =
+SRCS = ft_itoa.c ft_printf.c ft_putchar.c ft_putstr.c ft_strlen.c \
+			ft_puthex.c ft_putptr.c ft_putunbr.c ft_puthex_u.c
 
-all:
-	ar rc .c=.o
+OBJS = $(SRCS:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o
+	rm -rf *.o
 
 fclean: clean
-	rm -f .a
+	rm -rf $(NAME)
 
 re: fclean all
+
+test:
+	gcc -L. main.c -lftprintf -o main
+	./main

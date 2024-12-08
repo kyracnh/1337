@@ -2,6 +2,6 @@
 
 int main()
 {
-    ft_printf("hello :\n%d", 10);
-    //printf("%c\n", 'h');
+    ft_printf("hello : %X\n", 12541254125);
+    printf("hello : %X\n", 12541254125);
 }

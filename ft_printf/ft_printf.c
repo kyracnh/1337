@@ -53,9 +53,49 @@ int	ft_printf(const char *format, ...)
 				free(str);
 			}
 			// add more specifiers here ..........
+			else if (format[i] == 'p')
+			{
+				void *ptr;
+				int	c;
+
+				ptr = va_arg(args, void *);
+				c += ft_putptr(ptr);
+			}
+			// add more specifiers here ..........
+			else if (format[i] == 'u')
+			{
+				unsigned int	n;
+				int	c;
+
+				c = 0;
+				n = va_arg(args, unsigned int);
+				c += ft_putunbr(n);
+			}
+			// add more specifiers here ..........
+			else if (format[i] == '%')
+				ft_putchar('%');
+			// add more specifiers here ..........
+			else if (format[i] == 'x')
+			{
+				unsigned int ptr;
+				int	c;
+
+				ptr = va_arg(args, unsigned int);
+				c += ft_puthex(ptr);
+			}
+			// add more specifiers here ..........
+			else if (format[i] == 'X')
+			{
+				unsigned int ptr;
+				int	c;
+
+				ptr = va_arg(args, unsigned int);
+				c += ft_puthex_u(ptr);
+			}
+			// add more specifiers here ..........
 		}
 		else
-			write(1, &format[i],1);
+			write(1, &format[i], 1);
 		i++;
 	}
 	va_end(args);
