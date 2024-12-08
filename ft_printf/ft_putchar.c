@@ -6,14 +6,14 @@
 /*   By: aanmazir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:34:03 by aanmazir          #+#    #+#             */
-/*   Updated: 2024/12/08 09:34:05 by aanmazir         ###   ########.fr       */
+/*   Updated: 2024/12/08 13:01:01 by aanmazir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int    ft_putchar(char c)
+int	ft_putchar(char c)
 {
-    write(1, &c, 1);
-    return (1);
+	write(1, &c, 1);
+	return (1);
 }

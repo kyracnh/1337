@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_puthex_u.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aanmazir <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/08 12:53:27 by aanmazir          #+#    #+#             */
+/*   Updated: 2024/12/08 13:02:08 by aanmazir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int ft_puthex_u(unsigned long n)
+int	ft_puthex_u(unsigned long n)
 {
-    int c;
+	int	c;
 
-    c = 0;
-    if (n >= 16)
-        c += ft_puthex_u(n / 16);
-    ft_putchar("0123456789ABCDEF"[n % 16]);
-    return (c + 1);
+	c = 0;
+	if (n >= 16)
+		c += ft_puthex_u(n / 16);
+	ft_putchar("0123456789ABCDEF"[n % 16]);
+	return (c + 1);
 }
