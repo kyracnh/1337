@@ -6,7 +6,7 @@
 /*   By: aanmazir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 09:30:31 by aanmazir          #+#    #+#             */
-/*   Updated: 2024/12/09 13:35:03 by aanmazir         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:40:57 by aanmazir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,13 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%' && format[i + 1])
 		{
-			i++;
-			if ((o = format_sps(args, format[i])) == -1)
+			o = format_sps(args, format[++i]);
+			if (o == -1)
 				return (-1);
 			len += o;
 		}
-		else
-		{
-			if ((write(1, &format[i], 1)) == -1)
-				return (-1);
+		else if ((write(1, &format[i], 1)) != -1)
 			len++;
-		}
 		i++;
 	}
 	return (va_end(args), len);
