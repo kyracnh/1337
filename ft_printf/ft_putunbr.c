@@ -6,7 +6,7 @@
 /*   By: aanmazir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 12:55:15 by aanmazir          #+#    #+#             */
-/*   Updated: 2024/12/08 12:55:24 by aanmazir         ###   ########.fr       */
+/*   Updated: 2024/12/09 09:34:45 by aanmazir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	ft_putunbr(unsigned int n)
 {
-    int	c;
+	int	c;
 
-    c = 0;
-    if (n >= 10)
-        c += ft_putunbr(n / 10);
-    ft_putchar(n % 10 + '0');
-    return (c + 1);
+	c = 0;
+	if (n >= 10)
+		c += ft_putunbr(n / 10);
+	ft_putchar(n % 10 + '0');
+	return (c + 1);
 }

@@ -6,17 +6,23 @@
 /*   By: aanmazir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:34:20 by aanmazir          #+#    #+#             */
-/*   Updated: 2024/12/08 09:34:24 by aanmazir         ###   ########.fr       */
+/*   Updated: 2024/12/09 09:48:58 by aanmazir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
-    int i;
-
-    i = 0;
-    while (str[i] != '\0')
-        write(1, &str[i++],1);
+	int	i;
+	int c;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		c = write(1, &str[i], 1);
+		if (c == -1)
+			return (-1);
+		i++;
+	}
+	return (i);
 }

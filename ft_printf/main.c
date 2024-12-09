@@ -2,6 +2,10 @@
 
 int main()
 {
-    ft_printf("hello : %X\n", 12541254125);
-    printf("hello : %X\n", 12541254125);
+
+     int i = ft_printf("hello : %i\n", 12541);
+     int c = printf("hello : %i\n", 12541);
+
+     ft_printf("i = %d\n", i);
+     ft_printf("c = %d\n", c);
 }
