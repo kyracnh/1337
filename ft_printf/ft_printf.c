@@ -22,7 +22,13 @@ int	format_sps(va_list args, char format)
 			else if (format == 's')
 				i = ft_putstr(va_arg(args, char *));
 			else if (format == 'd' || format == 'i')
-				i = ft_putnbr(va_arg(args, int));
+			{
+				char	*str;
+
+				str = ft_itoa(va_arg(args, int));
+				i = ft_putstr(str);
+				free(str);
+			}
 			else if (format == 'p')
 				i = ft_putptr(va_arg(args, void *));
 			else if (format == 'u')
@@ -45,6 +51,8 @@ int	ft_printf(const char *format, ...)
 
 	i = 0;
 	len = 0;
+	if (!format)
+		return (0);
 	va_start(args, format);
 	while (format[i])
 	{
