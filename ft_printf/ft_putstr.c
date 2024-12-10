@@ -6,7 +6,7 @@
 /*   By: aanmazir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:34:20 by aanmazir          #+#    #+#             */
-/*   Updated: 2024/12/09 09:48:58 by aanmazir         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:11:39 by aanmazir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_putstr(char *str)
 {
 	int	i;
-	int c;
+	int	c;
 
 	if (!str)
 		return (ft_putstr("(null)"));
