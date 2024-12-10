@@ -3,8 +3,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = libftprintf.a
 
-SRCS = ft_itoa.c ft_printf.c ft_putchar.c ft_putstr.c ft_strlen.c \
-			ft_puthex.c ft_putptr.c ft_putunbr.c ft_puthex_u.c \
+SRCS = ft_itoa.c ft_printf.c ft_putchar.c ft_putstr.c ft_puthex.c \
+			ft_putptr.c ft_putunbr.c ft_puthex_u.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -23,7 +23,3 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
-
-test:
-	gcc -L. main.c -lftprintf -o main
-	./main
