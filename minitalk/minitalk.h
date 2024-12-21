@@ -23,6 +23,7 @@ typedef struct
 {
 	char	current_char;
 	int	current_bit;
+	pid_t	client_pid;
 } signal_data;
 
 #endif

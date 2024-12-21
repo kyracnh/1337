@@ -12,10 +12,15 @@
 
 #include "minitalk.h"
 
-signal_data data = {0, 0};
+signal_data data = {0, 0, 0};
 
-void	handle_signal(int signal)
+void	handle_signal(int signal, siginfo_t *info, void *context)
 {
+	(void)context;
+
+	if (data.client_pid == 0)
+		data.client_pid = info->si_pid;
+
 	data.current_char <<= 1;
 
 	if (signal == SIGUSR1)
@@ -28,25 +33,31 @@ void	handle_signal(int signal)
 		write(1, &data.current_char,1);
 		data.current_bit = 0;
 		data.current_char = 0;
+
+		if (data.client_pid != 0)
+			kill(data.client_pid, SIGUSR1);
 	}
 }
 
 int main(void)
 {
 	struct sigaction sa;
-
-	sa.sa_handler = handle_signal;
-	sa.sa_flags = SA_SIGINFO;
+	
 	sigemptyset(&sa.sa_mask);
+	//sigaddset(&sa.sa_mask, SIGUSR1);
+	//sigaddset(&sa.sa_mask, SIGUSR2);
+
+	sa.sa_sigaction = handle_signal;
+	sa.sa_flags = SA_SIGINFO;
 
 	if (sigaction(SIGUSR1, &sa, NULL) == -1)
 	{
-		perror("Error Regestering SIGUSR1 handler");
+		printf("Error Regestering SIGUSR1 handler");
 		return (1);
 	}
 	if (sigaction(SIGUSR2, &sa, NULL) == -1)
 	{
-		perror("Error registering SIGUSR2 handler");
+		printf("Error registering SIGUSR2 handler");
 		return (1);
 	}
 	printf("Server PID: %d\n", getpid());
