@@ -5,6 +5,9 @@ RM = rm -f
 NAME_CLIENT = client
 NAME_SERVER = server
 
+FT_PRINTF_DIR = ft_printf
+FT_PRINTF_LIB = $(FT_PRINTF_DIR)/libftprintf.a
+
 SRC_S = server.c ft_atoi/ft_atoi.c
 OBJ_S = $(SRC_S:.c=.o)
 SRC_C = client.c ft_atoi/ft_atoi.c
@@ -15,7 +18,10 @@ LIBFTPRINTF = ft_printf/libftprintf.a
 %.o: %.c
 	@ $(CC) $(FLAGS) -c $< -o $@
 
-all: client server
+all: $(FT_PRINTF_LIB) client server
+
+$(FT_PRINTF_LIB):
+	@ $(MAKE) -C $(FT_PRINTF_DIR)
 
 client: ft_printf $(OBJ_C)
 	@ $(CC) $(FLAGS) -o $(NAME_CLIENT) $(OBJ_C) $(LIBFTPRINTF)
