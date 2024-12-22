@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include "ft_printf/ft_printf.h"
 
 void	send_signal(int pid, char c)
 {
@@ -25,7 +26,7 @@ void	send_signal(int pid, char c)
 		{
 			if (kill(pid, SIGUSR1) == -1)
 			{
-				printf("Error sending SIGUSR1\n");
+				ft_printf("Error sending SIGUSR1\n");
 				exit(1);
 			}
 		}
@@ -33,7 +34,7 @@ void	send_signal(int pid, char c)
 		{
 			if (kill(pid, SIGUSR2) == -1)
 			{
-				printf("Error sending SIGUSR2\n");
+				ft_printf("Error sending SIGUSR2\n");
 				exit(1);
 			}
 		}
@@ -50,16 +51,16 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		printf("Use : %s <server_pid> \"message\"\n", argv[0]);
+		ft_printf("Use : %s <server_pid> \"message\"\n", argv[0]);
 		return (1);
 	}
-	server_pid = atoi(argv[1]);
+	server_pid = ft_atoi(argv[1]);
 	message = argv[2];
 	i = 0;
 	while (message[i] != '\0')
 	{
 		send_signal(server_pid, message[i]);
-		printf("Signal %i has been sent perfectly 🚀\n", i);
+		ft_printf("Signal %i has been sent perfectly 🚀\n", i);
 		i++;
 	}
 	send_signal(server_pid, '\0');

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include "ft_printf/ft_printf.h"
 
 void	handle_signal(int signal)
 {
