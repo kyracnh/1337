@@ -13,12 +13,14 @@
 #include "minitalk.h"
 #include "ft_printf/ft_printf.h"
 
-void	response(int signal)
+void	response(int signal, siginfo_t *info, void *context)
 {
-	if (signal == SIGUSR2)
-		ft_printf("1");
-	else if (signal == SIGUSR1)
-		ft_printf("0");
+	(void)signal;
+	(void)info;
+	(void)context;
+	if (signal == SIGUSR1)
+		ft_printf("The Server Received the Message perfectly 👋\n");
+	exit(EXIT_SUCCESS);
 }
 
 void	send_signal(int pid, char c)
@@ -53,6 +55,7 @@ void	send_signal(int pid, char c)
 
 int main(int argc, char *argv[])
 {
+	struct sigaction	sa;
 	int	server_pid;
 	int	i;
 	char	*message;
@@ -64,6 +67,9 @@ int main(int argc, char *argv[])
 	}
 	server_pid = ft_atoi(argv[1]);
 	message = argv[2];
+	sa.sa_sigaction = response;
+	sa.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &sa, NULL);
 	i = 0;
 	while (message[i] != '\0')
 	{

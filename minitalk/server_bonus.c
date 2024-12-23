@@ -27,14 +27,12 @@ void	handle_signal(int signal, siginfo_t *info, void *context)
 	current_bit++;
 	if (current_bit == 8)
 	{
-		write(1, &current_char,1);
+		write(1, &current_char, 1);
+		if (current_char == '\0')
+			kill(info->si_pid, SIGUSR1);
 		current_bit = 0;
 		current_char = 0;
 	}
-	if (signal == SIGUSR1)
-		kill(info->si_pid, SIGUSR1);
-	else if (signal == SIGUSR2)
-		kill(info->si_pid, SIGUSR2);
 }
 
 int main(void)
@@ -43,8 +41,7 @@ int main(void)
 
 	sa.sa_sigaction = handle_signal;
 	sa.sa_flags = SA_SIGINFO;
-	sigemptyset(&sa.sa_mask);
-
+	//sigemptyset(&sa.sa_mask);
 	if (sigaction(SIGUSR1, &sa, NULL) == -1)
 	{
 		ft_printf("Error Regestering SIGUSR1 handler");

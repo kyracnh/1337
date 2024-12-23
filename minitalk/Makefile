@@ -15,9 +15,9 @@ OBJ_S = $(SRC_S:.c=.o)
 SRC_C = client.c ft_atoi/ft_atoi.c
 OBJ_C = $(SRC_C:.c=.o)
 
-SRC_S_BONUS = server.c ft_atoi/ft_atoi.c
+SRC_S_BONUS = server_bonus.c ft_atoi/ft_atoi.c
 OBJ_S_BONUS = $(SRC_S_BONUS:.c=.o)
-SRC_C_BONUS = client.c ft_atoi/ft_atoi.c
+SRC_C_BONUS = client_bonus.c ft_atoi/ft_atoi.c
 OBJ_C_BONUS = $(SRC_C_BONUS:.c=.o)
 
 LIBFTPRINTF = ft_printf/libftprintf.a
